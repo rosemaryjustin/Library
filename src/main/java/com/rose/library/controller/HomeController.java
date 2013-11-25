@@ -1,4 +1,4 @@
-package com.rose.library;
+package com.rose.library.controller;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -30,23 +30,9 @@ public class HomeController {
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 		
 		String formattedDate = dateFormat.format(date);
-		
 		model.addAttribute("serverTime", formattedDate );
+		
 		
 		return "home";
 	}
-	@RequestMapping(value = "/home", method = RequestMethod.GET)
-	public String home1(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
-		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime1", formattedDate );
-		
-		return "home1";
-	}
-	
 }
