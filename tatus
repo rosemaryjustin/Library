@@ -1,0 +1,11 @@
+[33mcommit b94139204d9de36b3651a5fdf9029eccfe031707[m
+Author: Rosemary Justin <rosemaryjustin@gmail.com>
+Date:   Sun Nov 24 18:57:02 2013 -0600
+
+    [Sancho Rosemary] Added functionality to check out a book through CheckoutController.
+
+[33mcommit dbe41ca31f1254d0b743c9bc923e64467c68be90[m
+Author: Rosemary Justin <rosemaryjustin@gmail.com>
+Date:   Sun Nov 24 16:13:00 2013 -0600
+
+    [Sancho Rosemary] Initial commit, Intializing spring controller.

@@ -1,5 +1,7 @@
 package com.rose.library.controller;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,17 +13,18 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.rose.library.manager.CheckoutManager;
+import com.rose.library.DO.CheckInBooks;
+import com.rose.library.manager.CheckinManager;
 
 /**
  * Handles requests for the application home page.
  */
 @Controller
-@RequestMapping(value = "/checkout")
-public class CheckOutController {
+@RequestMapping(value = "/checkin")
+public class CheckInController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(CheckOutController.class);
-	
+	private static final Logger logger = LoggerFactory.getLogger(CheckInController.class);
+	List<CheckInBooks> checkInBooks = new ArrayList<CheckInBooks>();
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
@@ -29,38 +32,43 @@ public class CheckOutController {
 	public String checkout(Locale locale, Model model) {
 		initializeModelWithEmptyStrings(model);
 		
-		return "checkout";
+		return "checkin";
 	}
 	
 	@RequestMapping(value = "/submit", method = RequestMethod.POST)
 	public String submit(Locale locale, Model model, HttpServletRequest request) {
-		logger.info("Welcome to checkout page! The client locale is {}.", locale);
+		logger.info("Welcome to checkin page! The client locale is {}.", locale);
 		
 		String bookId = request.getParameter("bookId");
 		logger.info(bookId);
-		String branchId = request.getParameter("branchId");
-		logger.info(branchId);
 		String cardNo = request.getParameter("cardNo");
 		logger.info(cardNo);
+		String borrowerLastName = request.getParameter("borrowerLastName");
+		logger.info(borrowerLastName);
+		String borrowerFirstName = request.getParameter("borrowerFirstName");
+		logger.info(borrowerFirstName);
 		
-		String statusOfCheckout = new CheckoutManager().checkout(bookId, branchId, cardNo);
-		model.addAttribute("statusOfCheckout", statusOfCheckout );
+		
+		checkInBooks = new CheckinManager().checkin(bookId, cardNo, borrowerLastName,borrowerFirstName);
+		model.addAttribute("checkInBooks", checkInBooks );
 		
 		model.addAttribute("bookId", bookId );
-		model.addAttribute("branchId", branchId );
 		model.addAttribute("cardNo", cardNo );
+		model.addAttribute("borrowerLastName", borrowerLastName );
+		model.addAttribute("borrowerFirstName", borrowerFirstName );
 		
-		if(CheckoutManager.SUCCESS_MESSAGE.equalsIgnoreCase(statusOfCheckout)) {
+		/*if(CheckinManager.SUCCESS_MESSAGE.equalsIgnoreCase(statusOfCheckin)) {
 			initializeModelWithEmptyStrings(model);
-		}
+		}*/
 		
-		return "checkout";
+		return "checkin";
 	}
 	
 	private void initializeModelWithEmptyStrings(Model model) {
 		model.addAttribute("bookId", "" );
-		model.addAttribute("branchId", "" );
 		model.addAttribute("cardNo", "" );
+		model.addAttribute("borrowerLastName", "" );
+		model.addAttribute("borrowerFirstName", "" );
 	}
 	
 	

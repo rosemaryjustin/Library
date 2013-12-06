@@ -15,15 +15,15 @@
 			</tr>
 			<tr>
 				<td>Book Id :</td>
-				<td><input id='bookId' name="bookId" type="text" /></td>
+				<td><input id='bookId' name="bookId" type="text" value="${bookId}"/></td>
 			</tr>
 			<tr>
 				<td>Branch Id :</td>
-				<td><input id='branchId' name='branchId' type="text" /></td>
+				<td><input id='branchId' name='branchId' type="text" value="${branchId}"/></td>
 			</tr>
 			<tr>
 				<td>Card No :</td>
-				<td><input id='cardNo' name='cardNo' type="text" /></td>
+				<td><input id='cardNo' name='cardNo' type="text" value="${cardNo}"/></td>
 			</tr>
 			<tr>
 				<td colspan="2"><input id='submit' value='Check Out'
