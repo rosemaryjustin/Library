@@ -47,6 +47,7 @@ public class AddBorrowerController {
 		
 		
 		String statusOfAddBorrower = new AddBorrowerManager().addBorrower(borrowerLastName, borrowerFirstName, address,phoneNumber);
+		logger.info(statusOfAddBorrower);
 		model.addAttribute("statusOfAddBorrower", statusOfAddBorrower );
 		
 		model.addAttribute("borrowerLastName", borrowerLastName );

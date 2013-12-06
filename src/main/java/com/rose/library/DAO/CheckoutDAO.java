@@ -75,7 +75,6 @@ public class CheckoutDAO {
 	}
 
 	public boolean checkout(String bookId, String branchId, String cardNo) {
-		// TODO Auto-generated method stub
 		Connection connection = DatabaseConnector.getConnection();
 
 		Statement stmt;

@@ -10,7 +10,7 @@
 		<table>
 			<tr>
 				<td colspan="2">
-					${statusOfAddingBorrower}
+					${statusOfAddBorrower}
 				</td>
 			</tr>
 			<tr>

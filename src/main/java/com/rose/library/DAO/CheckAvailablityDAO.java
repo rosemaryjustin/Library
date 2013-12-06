@@ -26,7 +26,7 @@ public class CheckAvailablityDAO {
 		try {
 			stmt = connection.createStatement();
 			
-			String sql = "select b.book_id,lb.branch_id,no_of_copies as total_copies," +
+			String sql = "select b.book_id,b.title,lb.branch_id,no_of_copies as total_copies," +
 		            "no_of_copies - (select count(*) from book_loans where book_id = b.book_id " +
 					"and branch_id= lb.branch_id) as available_copies " +
 		            "from book b,book_authors ba,book_copies bc,library_branch lb " +
@@ -59,12 +59,14 @@ public class CheckAvailablityDAO {
 			while (rs.next()) {
 				AvailableBooks availableBook = new AvailableBooks();
 				availableBook.setBookId(rs.getString("book_id"));  
+				availableBook.setTitle(rs.getString("title"));  
 				availableBook.setBranchId(rs.getInt("branch_id"));
 				availableBook.setTotalCopies(rs.getInt("total_Copies"));
 				availableBook.setAvailableCopies(rs.getInt("available_copies"));
 
 				// Display values
 				logger.info("Book Id: " + availableBook.getBookId());
+				logger.info("Title : " + availableBook.getTitle());
 				logger.info(",Branch Id: " + availableBook.getBranchId());
 				logger.info(", Total Copies: " + availableBook.getTotalCopies());
 				logger.info(", Available copies: " + availableBook.getAvailableCopies());

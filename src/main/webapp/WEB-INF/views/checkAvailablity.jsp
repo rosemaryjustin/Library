@@ -27,17 +27,19 @@
 			<c:when test="${availableBooks.size() > 0}">
 				<table>
 					<tr>
-						<th width="25%">Book ID</th>
-						<th width="25%">Branch ID</th>
-						<th width="25%">Total Number Of Copies</th>
-						<th width="25%">Available Copies</th>
+						<th width="20%">Book ID</th>
+						<th width="20%">Title</th>
+						<th width="20%">Branch ID</th>
+						<th width="20%">Total Number Of Copies</th>
+						<th width="20%">Available Copies</th>
 					</tr>
 					<c:forEach items="${availableBooks}" var="availableBook">
 						<tr>
-							<td width="25%"><c:out value="${availableBook.bookId}" /></td>
-							<td width="25%"><c:out value="${availableBook.branchId}" /></td>
-							<td width="25%"><c:out value="${availableBook.totalCopies}" /></td>
-							<td width="25%"><c:out
+							<td width="20%"><c:out value="${availableBook.bookId}" /></td>
+							<td width="20%"><c:out value="${availableBook.title}" /></td>
+							<td width="20%"><c:out value="${availableBook.branchId}" /></td>
+							<td width="20%"><c:out value="${availableBook.totalCopies}" /></td>
+							<td width="20%"><c:out
 									value="${availableBook.availableCopies}" /></td>
 						</tr>
 					</c:forEach>

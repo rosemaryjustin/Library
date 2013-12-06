@@ -3,6 +3,7 @@ package com.rose.library.DO;
 public class AvailableBooks {
 	
 	private String bookId;
+	private String title;
 	private int branchId;
 	private int totalCopies;
 	private int availableCopies;
@@ -30,6 +31,12 @@ public class AvailableBooks {
 	}
 	public void setAvailableCopies(int availableCopies) {
 		this.availableCopies = availableCopies;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
 	}
 	
 }
