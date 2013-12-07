@@ -15,24 +15,49 @@ import com.rose.library.DO.CheckInBooks;
 
 public class CheckInDAO {
 	private static final Logger logger = LoggerFactory.getLogger(CheckInDAO.class);
-	List<CheckInBooks> checkInBooks = new ArrayList<CheckInBooks>();
+	List<CheckInBooks> checkInBooks;
 
 
 	public List<CheckInBooks> checkin(String bookId, String cardNo,
 			String borrowerLastName, String borrowerFirstName) {
-		
+		checkInBooks = new ArrayList<CheckInBooks>();
 		Connection connection = DatabaseConnector.getConnection();
 
 		Statement stmt;
 		try {
 			stmt = connection.createStatement();
-
-			String sql = "select card_no,book_id,lname,fname,address \n" +
-		            "from book_loans bl natural join borrower br \n" +
-		            "where (book_id = '"+bookId+"' or card_no = '"+cardNo+"' or lname = '"+borrowerLastName+"' or fname = '"+borrowerFirstName+"');\n";
 			
-			logger.info(sql);
-			ResultSet rs = stmt.executeQuery(sql);
+			String query = "select card_no,book_id,lname,fname,address \n" +
+		            "from book_loans bl natural join borrower br \n" +
+		            "where ";
+			//book_id = ''
+			//and 
+
+			boolean isThisFirst = true;
+			
+			if(!isEmpty(cardNo)) {
+				query += getFormattedString(isThisFirst, "card_no", cardNo);
+				isThisFirst = false;
+			}
+			if(!isEmpty(bookId)){
+				query += getFormattedString(isThisFirst, "book_id", bookId);
+				isThisFirst = false;
+			}
+			if(!isEmpty(borrowerLastName)){
+				query += getFormattedString(isThisFirst, "lname", borrowerLastName);
+				isThisFirst = false;
+			}
+			if(!isEmpty(borrowerFirstName)){
+				query += getFormattedString(isThisFirst, "fname", borrowerFirstName);
+				isThisFirst = false;
+			}
+			
+			if(isThisFirst) {
+				return checkInBooks;
+			}
+			
+			logger.info(query);
+			ResultSet rs = stmt.executeQuery(query);
 
 			while (rs.next()) {
 				CheckInBooks checkInBook = new CheckInBooks();
@@ -60,6 +85,22 @@ public class CheckInDAO {
 		}
 
 		return checkInBooks;
+	}
+	
+	private static String getFormattedString(boolean isFirstArgument, String columnName, String value) {
+		if(isEmpty(value)) return "";
+		String subQuery = columnName + " like '%"+value+"%'";
+		if(isFirstArgument) {
+			return subQuery;
+		}
+		return " and " + subQuery;
+	}
+	
+	private static boolean isEmpty(String text) {
+		if(text == null || text.isEmpty()) {
+			return true;
+		}
+		return false;
 	}
 
 }

@@ -1,7 +1,7 @@
 package com.rose.library.DO;
 
 public class CheckInBooks {
-	private String cardNo;
+	private String cardNo;	
 	private String bookId;
 	private String lastName;
 	private String firstName;
