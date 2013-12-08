@@ -1,10 +1,14 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page session="false"%>
-<html>
-<head>
-<title>CheckOut</title>
-</head>
-<body>
+<%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
+
+<t:genericpage>
+    <jsp:attribute name="header">
+    </jsp:attribute>
+    <jsp:attribute name="footer">
+    </jsp:attribute>
+    <jsp:body>
+
 	<form action="/library/checkout/submit" method="post">
 		<h1>Check out BOOKS !!!</h1>
 		<table>
@@ -31,5 +35,5 @@
 			</tr>
 		</table>
 	</form>
-</body>
-</html>
+    </jsp:body>
+</t:genericpage>

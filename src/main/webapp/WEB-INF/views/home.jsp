@@ -1,14 +1,13 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
-<html>
-<head>
-	<title>Home</title>
-</head>
-<body>
-<h1>
-	Hello Sancho!  
-</h1>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
-<P>  The time on the server is ${serverTime}. </P>
-</body>
-</html>
+<t:genericpage>
+    <jsp:attribute name="header">
+    </jsp:attribute>
+    <jsp:attribute name="footer">
+    </jsp:attribute>
+    <jsp:body>
+        <p>Hi I'm the heart of the message</p>
+    </jsp:body>
+</t:genericpage>

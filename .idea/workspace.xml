@@ -2,15 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c8cfadcf-1292-44a4-89ee-880983095b4c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/rose/library/DO/CheckInBooks.java" afterPath="$PROJECT_DIR$/src/main/java/com/rose/library/DO/CheckInBooks.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/rose/library/controller/CheckInController.java" afterPath="$PROJECT_DIR$/src/main/java/com/rose/library/controller/CheckInController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/rose/library/DAO/CheckInDAO.java" afterPath="$PROJECT_DIR$/src/main/java/com/rose/library/DAO/CheckInDAO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/addBorrower.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/addBorrower.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/checkAvailablity.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/checkAvailablity.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/checkin.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/checkin.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/checkout.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/checkout.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/home.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/home.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/m2e-wtp/web-resources/META-INF/maven/com.rose/library/pom.properties" afterPath="$PROJECT_DIR$/target/m2e-wtp/web-resources/META-INF/maven/com.rose/library/pom.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Library.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/Dummy.txt" changelist="c8cfadcf-1292-44a4-89ee-880983095b4c" time="1386393901624" ignored="false" />
+    <file path="$PROJECT_DIR$/src/main/java/com/rose/library/controller/CheckInController.java" changelist="c8cfadcf-1292-44a4-89ee-880983095b4c" time="1386526731094" ignored="false" />
+    <file path="$PROJECT_DIR$/src/main/java/com/rose/library/manager/CheckinManager.java" changelist="c8cfadcf-1292-44a4-89ee-880983095b4c" time="1386526731094" ignored="false" />
+    <file path="$PROJECT_DIR$/src/main/java/com/rose/library/DAO/CheckInDAO.java" changelist="c8cfadcf-1292-44a4-89ee-880983095b4c" time="1386526731094" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -241,7 +246,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="10" y="0" width="1346" height="728" extended-state="1" />
+    <frame x="10" y="0" width="1346" height="728" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2736842" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />

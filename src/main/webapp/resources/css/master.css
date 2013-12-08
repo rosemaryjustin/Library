@@ -1,0 +1,13 @@
+body {
+	width: 950px;
+	margin: 0 auto;
+	background-image: url(/library/resources/images/mint_green.png);
+	background-repeat: repeat-x;
+}
+
+#pageheader {
+	border-bottom: 1px solid #dfe2e1;
+	position: relative;
+	min-height: 55px;
+	margin-bottom: 25px;
+}
