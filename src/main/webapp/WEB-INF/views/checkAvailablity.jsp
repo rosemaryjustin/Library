@@ -21,30 +21,24 @@
     <jsp:body>
 
 	<form action="/library/checkAvailablity/submit" method="post">
-		<h1>Check Availability of BOOKS !!!</h1>
-		<table >
-		
-			<tr >
-				<td>Book Id :</td>
-				<td><input id='bookId' name="bookId" type="text"
+		<span style="color:#333" align="left"><h2>Check Availability of BOOKS</h2></span> 
+		<table style="padding-bottom:10px;margin-bottom:35px;" bgcolor="#eeffee">
+			<tr style="border-bottom: 1px solid #98FB98;">
+				<td class="rightpaddingbig">Book Id :<br/><input id='bookId' name="bookId" type="text"
 					value="${bookId}" /></td>
-				<td>Title :</td>
-				<td><input id='title' name='title' type="text" value="${title}" /></td>
-				<td>Author Name:</td>
-				<td><input id='authorName' name='authorName' type="text"
+				<td class="rightpaddingbig">Title :<br/><input id='title' name='title' type="text" value="${title}" /></td>
+				<td class="rightpaddingbig">Author Name:<br/><input id='authorName' name='authorName' type="text"
 					value="${authorName}" /></td>
-			</tr>
-
-			<tr>
-				<td colspan="6" style="align: center"><input id='submit'
-					value='Check Availablity' type="submit" /></td>
+			
+				<td style="padding-top:10px"><input id='submit'
+					value='Check Availablity' type="submit" class="orangebutton" /></td>
 			</tr>
 		</table>
 		<table id="bookstable">
 			<c:choose>
 				<c:when test="${availableBooks.size() > 0}">
 				<thead>
-					<tr class="gradeA">
+					<tr>
 						<th width="20%">Book ID&nbsp;</th>
 						<th width="20%">Title&nbsp;</th>
 						<th width="20%">Branch ID&nbsp;</th>
@@ -54,7 +48,7 @@
 					</thead>
 					<tbody>
 					<c:forEach items="${availableBooks}" var="availableBook">
-						<tr class="odd gradeX">
+						<tr>
 							<td width="20%">&nbsp;<c:out value="${availableBook.bookId}" />&nbsp;</td>
 							<td width="20%"><c:out value="${availableBook.title}" />&nbsp;&nbsp;</td>
 							<td width="20%"><c:out value="${availableBook.branchId}" />&nbsp;</td>

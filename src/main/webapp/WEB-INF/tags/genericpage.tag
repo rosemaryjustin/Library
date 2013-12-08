@@ -13,12 +13,19 @@
 		<jsp:invoke fragment="headerscripts"/>
 </head>
   <body>
-    <div id="pageheader">
-      <jsp:invoke fragment="header"/>
-      <a href="/library/checkAvailablity">Search</a>
-      <a href="/library/checkout">Check Out</a>
-      <a href="/library/checkin">Check In</a>
-      <a href="/library/addBorrower">Manage Borrower</a>
+  <div id="pageheader">
+  <jsp:invoke fragment="header"/>
+  	<div id="logo" style="float:left">
+  		<img height = "70px" src="/library/resources/images/green_logo.png"/>
+  		<span class="logoheader">Library</span>
+  	    
+  	</div>
+    <div id="nav" style="float:right;margin-top:45px;">
+      <a href="/library/checkAvailablity" class="item">Search</a>
+      <a href="/library/checkout" class="item">Check Out</a>
+      <a href="/library/checkin" class="item">Check In</a>
+      <a href="/library/addBorrower" class="item">Manage Borrower</a>
+    </div>
     </div>
     <div id="body">
     <table width="100%"><tr><td align="center"><jsp:doBody/></td></tr></table>

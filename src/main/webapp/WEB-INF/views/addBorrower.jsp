@@ -10,11 +10,11 @@
 	<jsp:body>
 
 	<form action="/library/addBorrower/submit" method="post">
-		<h1>Adding a Borrower !!!</h1>
-		<table>
+		<span style="color:#333"><h2>Adding a Borrower</h2> </span>
+		<table style="padding-bottom:10px;margin-bottom:15px;" cellpadding="15px" bgcolor="#eeffee">
 			<tr>
 				<td colspan="2">
-					${statusOfAddBorrower}
+					<i>${statusOfAddBorrower}</i>
 				</td>
 			</tr>
 			<tr>
@@ -29,7 +29,7 @@
 			</tr>
 			<tr>
 				<td>Address:</td>
-				<td><input id='address' name='address' type="text"
+				<td ><input id='address' name='address' type="text"
 						value="${address}" /></td>
 			</tr>
 			<tr>
@@ -38,8 +38,8 @@
 						value="${phoneNumber}" /></td>
 			</tr>
 			<tr>
-				<td colspan="2"><input id='submit' value='Add Borrower'
-						type="submit" /></td>
+				<td colspan="2" align="center"><input id='submit' value='Add Borrower'
+						type="submit" class="orangebutton" /></td>
 			</tr>
 		</table>
 	</form>

@@ -1,47 +1,56 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<%@taglib prefix="t" tagdir="/WEB-INF/tags"%>
 
 <t:genericpage>
-    <jsp:attribute name="header">
+	<jsp:attribute name="headerscripts">
+    	<script type="text/javascript" charset="utf-8">
+			$(document).ready(function() {
+				
+				$('#checkinlist').dataTable({
+					"aaSorting": [[0, 'asc']]
+					
+				});
+			} );
+		</script>
     </jsp:attribute>
-    <jsp:attribute name="footer">
+	<jsp:attribute name="header">
     </jsp:attribute>
-    <jsp:body>
+	<jsp:attribute name="footer">
+    </jsp:attribute>
+	<jsp:body>
         
     
 	<form action="/library/checkin/search" method="post">
-		<h1>Check in BOOKS !!!</h1>
-		<table>
+		<span style="color:#333" align="left"><h2>Check in BOOKS </h2></span>
+		<table style="padding-bottom:10px;margin-bottom:35px;" bgcolor="#eeffee">
 			<tr>
-				<td colspan="2">${statusOfCheckinSearch}</td>
-			</tr>
-			<tr>
-				<td>Card No :</td>
-				<td><input id='cardNo' name='cardNo' type="text"
-					value="${cardNo}" /></td>
-				<td>Borrower Last Name :</td>
-				<td><input id='borrowerLastName' name='borrowerLastName'
-					type="text" value="${borrowerLastName}" /></td>
-			</tr>
-			<tr>
-				<td>Book Id :</td>
-				<td><input id='bookId' name="bookId" type="text"
-					value="${bookId}" /></td>
-				<td>Borrower First Name :</td>
-				<td><input id='borrowerFirstName' name='borrowerFirstName'
-					type="text" value="${borrowerFirstName}" /></td>
-			</tr>
-			<tr>
-				<td colspan="4"><input id='submit' value='Check for Books'
-					type="submit" /></td>
+				<td class="rightpadding">Card No:<br />
+					<input id='cardNo' name='cardNo' type="text" value="${cardNo}" />
+				</td>
+				<td class="rightpadding">
+					Book Id :<br />
+					<input id='bookId' name="bookId" type="text" value="${bookId}" />
+				</td>
+				<td class="rightpadding">Borrower Last Name:<br />
+				<input id='borrowerLastName' name='borrowerLastName' type="text"
+						value="${borrowerLastName}" /></td>
+			
+				
+				<td class="rightpadding">Borrower First Name:<br />
+				<input id='borrowerFirstName' name='borrowerFirstName' type="text"
+						value="${borrowerFirstName}" /></td>
+			
+				<td style="padding-top:10px"><input id='submit' value='Check for Books'
+						type="submit" class="orangebutton" /></td>
 			</tr>
 		</table>
 	</form>
 	<form action="/library/checkin/submit" method="post">
-		<table>
+		<table id="checkinlist">
 			<c:choose>
 				<c:when test="${checkInBooks.size() > 0}">
+				<thead>
 					<tr>
 						<th></th>
 						<th>Card No&nbsp;</th>
@@ -52,11 +61,13 @@
 						<th>Borrower First Name&nbsp;</th>
 						<th>Borrower Address&nbsp;</th>
 					</tr>
+					</thead>
+					<tbody>
 					<c:forEach items="${checkInBooks}" var="checkInBook">
 						<tr>
 							<td><input type="checkbox"
-								value="${checkInBook.cardNo}#${checkInBook.bookId}#${checkInBook.branchId}"
-								name="checked"></td>
+										value="${checkInBook.cardNo}#${checkInBook.bookId}#${checkInBook.branchId}"
+										name="checked"></td>
 							<td><c:out value="${checkInBook.cardNo}" />&nbsp;</td>
 							<td><c:out value="${checkInBook.bookId}" />&nbsp;</td>
 							<td><c:out value="${checkInBook.title}" />&nbsp;</td>
@@ -69,11 +80,11 @@
 					</c:forEach>
 					<tr>
 						<td colspan="4"><input id='submit' value='Check In'
-							type="submit" /></td>
+									type="submit" /></td>
 					</tr>
-
+					</tbody>
 				</c:when>
-				<c:when test = "${checkInBooks.size() == 0}">
+				<c:when test="${checkInBooks.size() == 0}">
 					<tr>
 						<td colspan="7">There are no book loans matching that description
 							! Please enter valid values.</td>

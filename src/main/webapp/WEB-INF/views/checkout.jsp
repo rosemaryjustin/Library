@@ -10,11 +10,11 @@
     <jsp:body>
 
 	<form action="/library/checkout/submit" method="post">
-		<h1>Check out BOOKS !!!</h1>
-		<table>
+		<span style="color:#333"><h2>Check out BOOKS</h2></span> 
+		<table style="padding-bottom:10px;margin-bottom:15px;" cellpadding="20px" bgcolor="#eeffee">
 			<tr>
 				<td colspan="2">
-					${statusOfCheckout}
+					<i>${statusOfCheckout}</i>
 				</td>
 			</tr>
 			<tr>
@@ -30,8 +30,8 @@
 				<td><input id='cardNo' name='cardNo' type="text" value="${cardNo}"/></td>
 			</tr>
 			<tr>
-				<td colspan="2"><input id='submit' value='Check Out'
-					type="submit" /></td>
+				<td colspan="2" align="center"><input id='submit' value='Check Out'
+					type="submit" class="orangebutton" /></td>
 			</tr>
 		</table>
 	</form>
