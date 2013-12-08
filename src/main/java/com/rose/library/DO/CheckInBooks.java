@@ -1,42 +1,28 @@
 package com.rose.library.DO;
 
-public class CheckInBooks {
-	private String cardNo;	
-	private String bookId;
-	private String lastName;
-	private String firstName;
-	private String address;
+public class CheckinBooks {
+	private String CardNo;
+	private String BookId;
+	private int BranchId;
 	
 	public String getCardNo() {
-		return cardNo;
+		return CardNo;
 	}
 	public void setCardNo(String cardNo) {
-		this.cardNo = cardNo;
+		CardNo = cardNo;
 	}
 	public String getBookId() {
-		return bookId;
+		return BookId;
 	}
 	public void setBookId(String bookId) {
-		this.bookId = bookId;
+		BookId = bookId;
 	}
-	public String getLastName() {
-		return lastName;
+	public int getBranchId() {
+		return BranchId;
 	}
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-	public String getFirstName() {
-		return firstName;
-	}
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-	public String getAddress() {
-		return address;
-	}
-	public void setAddress(String address) {
-		this.address = address;
+	public void setBranchId(int branchId) {
+		BranchId = branchId;
 	}
 	
-	
+
 }

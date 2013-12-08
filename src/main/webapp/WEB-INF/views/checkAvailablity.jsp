@@ -23,29 +23,35 @@
 					value='Check Availablity' type="submit" /></td>
 			</tr>
 		</table>
-		<c:choose>
-			<c:when test="${availableBooks.size() > 0}">
-				<table>
+		<table>
+			<c:choose>
+				<c:when test="${availableBooks.size() > 0}">
 					<tr>
-						<th width="20%">Book ID</th>
-						<th width="20%">Title</th>
-						<th width="20%">Branch ID</th>
-						<th width="20%">Total Number Of Copies</th>
-						<th width="20%">Available Copies</th>
+						<th width="20%">Book ID&nbsp;</th>
+						<th width="20%">Title&nbsp;</th>
+						<th width="20%">Branch ID&nbsp;</th>
+						<th width="20%">Total Number Of Copies&nbsp;</th>
+						<th width="20%">Available Copies&nbsp;</th>
 					</tr>
 					<c:forEach items="${availableBooks}" var="availableBook">
 						<tr>
-							<td width="20%"><c:out value="${availableBook.bookId}" /></td>
-							<td width="20%"><c:out value="${availableBook.title}" /></td>
-							<td width="20%"><c:out value="${availableBook.branchId}" /></td>
-							<td width="20%"><c:out value="${availableBook.totalCopies}" /></td>
+							<td width="20%">&nbsp;<c:out value="${availableBook.bookId}" />&nbsp;</td>
+							<td width="20%"><c:out value="${availableBook.title}" />&nbsp;&nbsp;</td>
+							<td width="20%"><c:out value="${availableBook.branchId}" />&nbsp;</td>
+							<td width="20%"><c:out value="${availableBook.totalCopies}" />&nbsp;</td>
 							<td width="20%"><c:out
-									value="${availableBook.availableCopies}" /></td>
+									value="${availableBook.availableCopies}" />&nbsp;</td>
 						</tr>
 					</c:forEach>
-				</table>
-			</c:when>
-		</c:choose>
+				</c:when>
+				<c:when test="${availableBooks.size() == 0}">
+					<tr>
+						<td colspan="7">There are no books matching that description
+							! Please enter valid values.</td>
+					</tr>
+				</c:when>
+			</c:choose>
+		</table>
 	</form>
 </body>
 </html>

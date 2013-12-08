@@ -13,7 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.rose.library.DO.CheckInBooks;
+import com.rose.library.DO.CheckInBooksSearch;
 import com.rose.library.manager.CheckinManager;
 
 /**
@@ -24,7 +24,7 @@ import com.rose.library.manager.CheckinManager;
 public class CheckInController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(CheckInController.class);
-	List<CheckInBooks> checkInBooks = new ArrayList<CheckInBooks>();
+	List<CheckInBooksSearch> checkInBooks = new ArrayList<CheckInBooksSearch>();
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
@@ -35,8 +35,8 @@ public class CheckInController {
 		return "checkin";
 	}
 	
-	@RequestMapping(value = "/submit", method = RequestMethod.POST)
-	public String submit(Locale locale, Model model, HttpServletRequest request) {
+	@RequestMapping(value = "/search", method = RequestMethod.POST)
+	public String search(Locale locale, Model model, HttpServletRequest request) {
 		logger.info("Welcome to checkin page! The client locale is {}.", locale);
 		
 		String bookId = request.getParameter("bookId");
@@ -49,7 +49,7 @@ public class CheckInController {
 		logger.info(borrowerFirstName);
 		
 		
-		checkInBooks = new CheckinManager().checkin(bookId, cardNo, borrowerLastName,borrowerFirstName);
+		checkInBooks = new CheckinManager().checkinSearch(bookId, cardNo, borrowerLastName,borrowerFirstName);
 		model.addAttribute("checkInBooks", checkInBooks );
 		
 		model.addAttribute("bookId", bookId );
@@ -63,6 +63,17 @@ public class CheckInController {
 		
 		return "checkin";
 	}
+	
+	@RequestMapping(value = "/submit", method = RequestMethod.POST)
+	public String submit(Locale locale, Model model, HttpServletRequest request) {
+		String[] toCheckinBooks = request.getParameterValues("checked");
+		for (int i = 0; i < toCheckinBooks.length; i++)
+			logger.info(toCheckinBooks[i]);
+		String checkinStatus = new CheckinManager().checkin(toCheckinBooks);
+		model.addAttribute("checkinStatus", checkinStatus );
+		return "checkin";
+	}
+	
 	
 	private void initializeModelWithEmptyStrings(Model model) {
 		model.addAttribute("bookId", "" );
