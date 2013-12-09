@@ -50,7 +50,7 @@ public class AddBorrowerController {
 		
 		String statusOfAddBorrower = new AddBorrowerManager().addBorrower(borrowerLastName, borrowerFirstName, address,phoneNumber);
 		logger.info(statusOfAddBorrower);
-		if(AddBorrowerManager.FAIL_MESSAGE.equalsIgnoreCase(statusOfAddBorrower)) {
+		if(statusOfAddBorrower != null && !statusOfAddBorrower.startsWith("Success:")) {
 			model.addAttribute("statusOfAddBorrower", statusOfAddBorrower );
 			
 			model.addAttribute("borrowerLastName", borrowerLastName );
@@ -60,10 +60,13 @@ public class AddBorrowerController {
 			
 			return "addBorrower";
 		} else {
+			String cardNo = statusOfAddBorrower.substring("Success:".length());
 			List<Borrower> borrowers = new AddBorrowerManager()
-			.searchBorrower(statusOfAddBorrower, "", "", "");
+			.searchBorrower(cardNo, "", "", "");
+			
+			model.addAttribute("statusOfAddBorrower", "Successfully added the following borrower." );
 			model.addAttribute("borrowers", borrowers );
-			model.addAttribute("cardNo", statusOfAddBorrower );
+			model.addAttribute("cardNo", cardNo );
 			model.addAttribute("borrowerLastName", borrowerLastName );
 			model.addAttribute("borrowerFirstName", borrowerFirstName );
 			model.addAttribute("address", address );

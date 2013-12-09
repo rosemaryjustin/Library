@@ -25,6 +25,7 @@
       <a href="/library/checkout" class="item">Check Out</a>
       <a href="/library/checkin" class="item">Check In</a>
       <a href="/library/addBorrower/search" class="item">Manage Borrower</a>
+      <a href="/library/admin" class="item">Admin</a>
     </div>
     </div>
     <div id="body">

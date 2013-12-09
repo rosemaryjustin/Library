@@ -39,7 +39,7 @@ public class AddBorrowerManager {
 			logger.info("Phone number is empty !");
 			phoneNumberEmpty = 0;
 		}
-		return new AddBorrowerDAO().addBorrower(borrowerLastName, borrowerFirstName, address,phoneNumber,cardNo,phoneNumberEmpty)? ""+cardNo : FAIL_MESSAGE;
+		return new AddBorrowerDAO().addBorrower(borrowerLastName, borrowerFirstName, address,phoneNumber,cardNo,phoneNumberEmpty)? "Success:"+cardNo : FAIL_MESSAGE;
 	}
 	
 	public List<Borrower> searchBorrower(String cardNo, String borrowerLastName,

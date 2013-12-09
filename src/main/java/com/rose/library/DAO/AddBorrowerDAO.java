@@ -16,7 +16,6 @@ import com.rose.library.DO.Borrower;
 public class AddBorrowerDAO {
 	private static final Logger logger = LoggerFactory.getLogger(AddBorrowerDAO.class);
 	
-
 	public boolean checkDuplicateCard(String borrowerLastName,
 			String borrowerFirstName, String address) {
 		Connection connection = DatabaseConnector.getConnection();

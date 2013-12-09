@@ -40,6 +40,9 @@
 					value='Search' type="submit" class="orangebutton" /></td>
 			</tr>
 		</table>
+	
+		<div style="color:green">${statusOfAddBorrower}</div>
+		
 		<table id="borrowerstable">
 			<c:choose>
 				<c:when test="${borrowers.size() > 0}">
