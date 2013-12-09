@@ -22,7 +22,7 @@ import com.rose.library.manager.CheckAvailablityManager;
  * Handles requests for the application home page.
  */
 @Controller
-@RequestMapping(value = "/checkAvailablity")
+@RequestMapping(value = "")
 public class CheckAvailablityController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(CheckAvailablityController.class);

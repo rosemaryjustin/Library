@@ -20,7 +20,7 @@
     </jsp:attribute>
     <jsp:body>
 
-	<form action="/library/checkAvailablity/submit" method="post">
+	<form action="/library/submit" method="post">
 		<span style="color:#333" align="left"><h2>Check Availability of Books</h2></span> 
 		<table style="padding-bottom:10px;margin-bottom:35px;" bgcolor="#eeffee">
 			<tr style="border-bottom: 1px solid #98FB98;">
