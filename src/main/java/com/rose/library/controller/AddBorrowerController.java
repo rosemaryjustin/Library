@@ -50,14 +50,28 @@ public class AddBorrowerController {
 		
 		String statusOfAddBorrower = new AddBorrowerManager().addBorrower(borrowerLastName, borrowerFirstName, address,phoneNumber);
 		logger.info(statusOfAddBorrower);
-		model.addAttribute("statusOfAddBorrower", statusOfAddBorrower );
+		if(AddBorrowerManager.FAIL_MESSAGE.equalsIgnoreCase(statusOfAddBorrower)) {
+			model.addAttribute("statusOfAddBorrower", statusOfAddBorrower );
+			
+			model.addAttribute("borrowerLastName", borrowerLastName );
+			model.addAttribute("borrowerFirstName", borrowerFirstName );
+			model.addAttribute("address", address );
+			model.addAttribute("phoneNumber", phoneNumber );
+			
+			return "addBorrower";
+		} else {
+			List<Borrower> borrowers = new AddBorrowerManager()
+			.searchBorrower(statusOfAddBorrower, "", "", "");
+			model.addAttribute("borrowers", borrowers );
+			model.addAttribute("cardNo", statusOfAddBorrower );
+			model.addAttribute("borrowerLastName", borrowerLastName );
+			model.addAttribute("borrowerFirstName", borrowerFirstName );
+			model.addAttribute("address", address );
+			model.addAttribute("phoneNumber", phoneNumber );
+			return "searchBorrower";
+		}
 		
-		model.addAttribute("borrowerLastName", borrowerLastName );
-		model.addAttribute("borrowerFirstName", borrowerFirstName );
-		model.addAttribute("address", address );
-		model.addAttribute("phoneNumber", phoneNumber );
-		
-		return "addBorrower";
+	
 	}
 	
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
@@ -128,10 +142,13 @@ public class AddBorrowerController {
 				borrowerLastName, borrowerFirstName, phoneNumber);
 		
 		model.addAttribute("borrowers", borrowers );
-//		model.addAttribute("cardNo", cardNo );
-//		model.addAttribute("borrowerLastName", borrowerLastName );
-//		model.addAttribute("borrowerFirstName", borrowerFirstName );
-//		model.addAttribute("phoneNumber", phoneNumber );
+		if(cardNo != null) {
+			model.addAttribute("cardNo", cardNo );
+		}
+		
+		model.addAttribute("borrowerLastName", borrowerLastName );
+		model.addAttribute("borrowerFirstName", borrowerFirstName );
+		model.addAttribute("phoneNumber", phoneNumber );
 		return "searchBorrower";
 	}
 	

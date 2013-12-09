@@ -28,7 +28,7 @@
 		<table style="padding-bottom:10px;margin-bottom:35px;" bgcolor="#eeffee">
 			<tr style="border-bottom: 1px solid #98FB98;">
 				<td class="rightpaddingbig">Card No :<br/><input id='cardNo' name="cardNo" type="text"
-					 /></td>
+					 value="${cardNo}" /></td>
 				<td class="rightpaddingbig">Last Name :<br/><input id='borrowerLastName' 
 				name='borrowerLastName' type="text" value="${borrowerLastName}" /></td>
 				<td class="rightpaddingbig">First Name:<br/><input id='borrowerFirstName' name='borrowerFirstName' type="text"
