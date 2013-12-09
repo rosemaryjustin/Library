@@ -21,10 +21,10 @@
   	    
   	</div>
     <div id="nav" style="float:right;margin-top:45px;">
-      <a href="/library/checkAvailablity" class="item">Search</a>
+      <a href="/library/checkAvailablity" class="item">Check Availability</a>
       <a href="/library/checkout" class="item">Check Out</a>
       <a href="/library/checkin" class="item">Check In</a>
-      <a href="/library/addBorrower" class="item">Manage Borrower</a>
+      <a href="/library/addBorrower/search" class="item">Manage Borrower</a>
     </div>
     </div>
     <div id="body">

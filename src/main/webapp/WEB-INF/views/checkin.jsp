@@ -22,7 +22,7 @@
         
     
 	<form action="/library/checkin/search" method="post">
-		<span style="color:#333" align="left"><h2>Check in BOOKS </h2></span>
+		<span style="color:#333" align="left"><h2>Check in Books </h2></span>
 		<table style="padding-bottom:10px;margin-bottom:35px;" bgcolor="#eeffee">
 			<tr>
 				<td class="rightpadding">Card No:<br />
@@ -66,7 +66,7 @@
 					<c:forEach items="${checkInBooks}" var="checkInBook">
 						<tr>
 							<td><input type="checkbox"
-										value="${checkInBook.cardNo}#${checkInBook.bookId}#${checkInBook.branchId}"
+										value="${checkInBook.cardNo}#${checkInBook.bookId}#${checkInBook.branchId}#${checkInBook.title}"
 										name="checked"></td>
 							<td><c:out value="${checkInBook.cardNo}" />&nbsp;</td>
 							<td><c:out value="${checkInBook.bookId}" />&nbsp;</td>

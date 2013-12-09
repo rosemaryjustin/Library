@@ -1,5 +1,6 @@
 package com.rose.library.controller;
 
+import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.rose.library.DO.Borrower;
 import com.rose.library.manager.AddBorrowerManager;
 
 /**
@@ -55,12 +57,85 @@ public class AddBorrowerController {
 		model.addAttribute("address", address );
 		model.addAttribute("phoneNumber", phoneNumber );
 		
-		/*if(CheckinManager.SUCCESS_MESSAGE.equalsIgnoreCase(statusOfAddBorrower)) {
-			initializeModelWithEmptyStrings(model);
-		}*/
-		
 		return "addBorrower";
 	}
+	
+	@RequestMapping(value = "/search", method = RequestMethod.GET)
+	public String search(Locale locale, Model model, HttpServletRequest request) {
+		
+		return "searchBorrower";
+	}
+	
+	@RequestMapping(value = "/edit", method = RequestMethod.GET)
+	public String edit(Locale locale, Model model, HttpServletRequest request) {
+		String cardNo = request.getParameter("cardNo");
+		logger.info(cardNo);
+		String borrowerLastName = request.getParameter("borrowerLastName");
+		logger.info(borrowerLastName);
+		String borrowerFirstName = request.getParameter("borrowerFirstName");
+		logger.info(borrowerFirstName);
+		String phoneNumber = request.getParameter("phoneNumber");
+		logger.info(phoneNumber);
+		String address = request.getParameter("address");
+		logger.info(address);
+		
+		model.addAttribute("cardNo", cardNo );
+		model.addAttribute("borrowerLastName", borrowerLastName );
+		model.addAttribute("borrowerFirstName", borrowerFirstName );
+		model.addAttribute("phoneNumber", phoneNumber );
+		model.addAttribute("address", address );
+		return "editBorrower";
+	}
+	
+	@RequestMapping(value = "/edit/submit", method = RequestMethod.POST)
+	public String editSubmit(Locale locale, Model model, HttpServletRequest request) {
+		String cardNo = request.getParameter("cardNo");
+		logger.info(cardNo);
+		String borrowerLastName = request.getParameter("borrowerLastName");
+		logger.info(borrowerLastName);
+		String borrowerFirstName = request.getParameter("borrowerFirstName");
+		logger.info(borrowerFirstName);
+		String phoneNumber = request.getParameter("phoneNumber");
+		logger.info(phoneNumber);
+		String address = request.getParameter("address");
+		logger.info(address);
+		
+		String editBorrowerMessage = new AddBorrowerManager().updateBorrower(cardNo,
+				borrowerFirstName,borrowerLastName,address,phoneNumber);
+		
+		
+		model.addAttribute("editBorrowerMessage", editBorrowerMessage );
+		model.addAttribute("cardNo", cardNo );
+		model.addAttribute("borrowerLastName", borrowerLastName );
+		model.addAttribute("borrowerFirstName", borrowerFirstName );
+		model.addAttribute("phoneNumber", phoneNumber );
+		model.addAttribute("address", address );
+		return "editBorrower";
+	}
+	
+	@RequestMapping(value = "/search/submit", method = RequestMethod.POST)
+	public String searchSubmit(Locale locale, Model model, HttpServletRequest request) {
+		String cardNo = request.getParameter("cardNo");
+		logger.info(cardNo);
+		String borrowerLastName = request.getParameter("borrowerLastName");
+		logger.info(borrowerLastName);
+		String borrowerFirstName = request.getParameter("borrowerFirstName");
+		logger.info(borrowerFirstName);
+		String phoneNumber = request.getParameter("phoneNumber");
+		logger.info(phoneNumber);
+		
+		List<Borrower> borrowers = new AddBorrowerManager().searchBorrower(cardNo, 
+				borrowerLastName, borrowerFirstName, phoneNumber);
+		
+		model.addAttribute("borrowers", borrowers );
+//		model.addAttribute("cardNo", cardNo );
+//		model.addAttribute("borrowerLastName", borrowerLastName );
+//		model.addAttribute("borrowerFirstName", borrowerFirstName );
+//		model.addAttribute("phoneNumber", phoneNumber );
+		return "searchBorrower";
+	}
+	
+	
 	
 	private void initializeModelWithEmptyStrings(Model model) {
 		model.addAttribute("borrowerLastName", "" );

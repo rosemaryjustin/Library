@@ -4,6 +4,7 @@ public class CheckinBooks {
 	private String CardNo;
 	private String BookId;
 	private int BranchId;
+	private String title;
 	
 	public String getCardNo() {
 		return CardNo;
@@ -22,6 +23,12 @@ public class CheckinBooks {
 	}
 	public void setBranchId(int branchId) {
 		BranchId = branchId;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
 	}
 	
 

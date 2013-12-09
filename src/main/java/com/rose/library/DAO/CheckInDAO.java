@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -121,10 +122,26 @@ public class CheckInDAO {
 				logger.info(checkinBooks.getCardNo());
 				logger.info(checkinBooks.getBookId());
 				logger.info(""+checkinBooks.getBranchId());
+				String query = "select date_out from book_loans where card_no ='"+checkinBooks.getCardNo()+"' AND  " +
+						" book_id = '"+checkinBooks.getBookId()+"' AND branch_id = "+checkinBooks.getBranchId()+";";
+				logger.info(query);
+				ResultSet rsSelect = stmt.executeQuery(query);
+				Date dateOut;
+				rsSelect.next();
+				dateOut = rsSelect.getDate("date_out");
+				logger.info("Date out: " + dateOut);
 				String sql = "DELETE FROM `BOOK_LOANS` WHERE card_no ='"+checkinBooks.getCardNo()+"' AND  " +
 						" book_id = '"+checkinBooks.getBookId()+"' AND branch_id = "+checkinBooks.getBranchId()+";";
 				logger.info(sql);
 				rs = stmt.executeUpdate(sql);
+				if(rs > 0){
+					String sqlInsert ="INSERT INTO `book_loans_hist` "+
+							"(`book_id`,`branch_id`,`card_no`,`date_out`,`date_in`) VALUES"+
+									" ('"+checkinBooks.getBookId()+"',"+checkinBooks.getBranchId()+
+									",'"+checkinBooks.getCardNo()+"','"+dateOut+"',curdate());";
+							logger.info(sqlInsert);
+							rs = stmt.executeUpdate(sqlInsert);
+				}
 			}
 			stmt.close();
 			return rs > 0;

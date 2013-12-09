@@ -10,7 +10,7 @@
     <jsp:body>
 
 	<form action="/library/checkout/submit" method="post">
-		<span style="color:#333"><h2>Check out BOOKS</h2></span> 
+		<span style="color:#333"><h2>Check out Books</h2></span> 
 		<table style="padding-bottom:10px;margin-bottom:15px;" cellpadding="20px" bgcolor="#eeffee">
 			<tr>
 				<td colspan="2">
